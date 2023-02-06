@@ -192,7 +192,7 @@ export default function Home() {
                   style={{
                     width: "100%",
                   }}
-                  placeholder="Chọn ngần hàng"
+                  placeholder="Chọn ngân hàng"
                   optionFilterProp="children"
                   filterOption={(input, option) =>
                     (option?.label.toLowerCase() ?? "").includes(
