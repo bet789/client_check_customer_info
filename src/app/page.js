@@ -370,6 +370,7 @@ export default function Home() {
                 footer={null}
                 onCancel={handleCancel}
                 width={700}
+                style={{ top: 20 }}
               >
                 <p>
                   <b>※ Mã: </b>
