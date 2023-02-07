@@ -156,3 +156,12 @@ thead {
   background-image: linear-gradient(to bottom, #6cb5cc, #2f7899);
   color: #ffffff;
 }
+
+.ant-notification-center {
+  position: fixed !important;
+  top: 50% !important;
+  right: 50% !important;
+  transform: translate(50%, -50%) !important;
+  bottom: unset !important;
+  margin-inline-end: 0 !important;
+}

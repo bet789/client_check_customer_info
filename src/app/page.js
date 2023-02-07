@@ -102,24 +102,28 @@ export default function Home() {
             setLoading(false);
             apiNoti["error"]({
               message: "Thất bại",
+              placement: "center",
               description: <Typography>Tài khoản không tồn tại!</Typography>,
             });
           } else if (response?.data?.status === 2) {
             setLoading(false);
             apiNoti["error"]({
               message: "Thất bại",
+              placement: "center",
               description: <Typography>Sai họ và tên!</Typography>,
             });
           } else if (response?.data?.status === 3) {
             setLoading(false);
             apiNoti["error"]({
               message: "Thất bại",
+              placement: "center",
               description: <Typography>Sai tên ngân hàng!</Typography>,
             });
           } else if (response?.data?.status === 4) {
             setLoading(false);
             apiNoti["error"]({
               message: "Thất bại",
+              placement: "center",
               description: <Typography>Sai số tài khoản ngân hàng!</Typography>,
             });
           } else {
@@ -127,6 +131,7 @@ export default function Home() {
             apiNoti["success"]({
               duration: 5000,
               message: "Thành công",
+              placement: "center",
               description: (
                 <>
                   <Typography>Tài khoản: {response?.data?.userName}</Typography>
@@ -153,7 +158,6 @@ export default function Home() {
                     <span style={{ color: "#f01" }}>
                       {` ${(parseInt(response?.data?.bonusValue) * 30) / 100} `}
                     </span>
-                    (Tiền thưởng * 30%)
                   </Typography>
                   <Typography>
                     Số lần nạp: <span style={{ color: "#f01" }}>3</span> lần trở
@@ -170,6 +174,7 @@ export default function Home() {
           apiNoti["error"]({
             message: "Thất bại",
             description: error,
+            placement: "center",
           });
         });
     }
@@ -245,6 +250,12 @@ export default function Home() {
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
+    // apiNoti["error"]({
+    //   duration: 500000,
+    //   message: "Thất bại",
+    //   description: <Typography>Sai số tài khoản ngân hàng!</Typography>,
+    //   placement: "center",
+    // });
   };
 
   const showModal = () => {
