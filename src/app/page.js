@@ -66,8 +66,8 @@ export default function Home() {
   }, []);
 
   const getIP = async () => {
-    const res = await axios.get("https://geolocation-db.com/json/");
-    setIP(res.data.IPv4);
+    const res = await axios.get("http://ip-api.com/json");
+    setIP(res.data.query);
   };
 
   const getListBank = async () => {
@@ -289,6 +289,7 @@ export default function Home() {
               <Form.Item
                 label="Tài khoản"
                 name="userName"
+                className="form-item"
                 rules={[
                   {
                     required: true,
