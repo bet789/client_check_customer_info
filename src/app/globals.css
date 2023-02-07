@@ -118,6 +118,11 @@ a {
   max-width: 400px;
 }
 
+
+:where(.css-dev-only-do-not-override-ixblex).ant-form-item {
+  margin-bottom: 12px !important;
+}
+
 .btn-shbet {
   background-image: linear-gradient(180deg, #6cb5cc, #2f7899) !important;
   color: #fff !important;
@@ -126,4 +131,28 @@ a {
 .btn-shbet:hover {
   border: 1px solid #fff !important;
   color: #fff !important;
+}
+
+.policy {
+  margin-bottom: 12px;
+}
+
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 10px;
+}
+
+th,
+td {
+  vertical-align: middle;
+  text-align: center;
+  padding: 8px 5px;
+  border: 1px solid #2f7899;
+}
+
+thead {
+  background-image: linear-gradient(to bottom, #6cb5cc, #2f7899);
+  color: #ffffff;
 }
