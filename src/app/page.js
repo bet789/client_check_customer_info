@@ -140,8 +140,8 @@ export default function Home() {
                     {response?.data?.level}
                   </Typography>
                   <Typography>
-                    Thưởng miễn phí: {response?.data?.bonusValue} - Hết hạn sau:
-                    30/03/2023
+                    Thưởng miễn phí: {response?.data?.bonusValue} điểm - Hết hạn
+                    sau: 30/03/2023
                   </Typography>
                   <Typography>
                     <a
@@ -157,7 +157,8 @@ export default function Home() {
                     Số tiền nạp:
                     <span style={{ color: "#f01" }}>
                       {` ${(parseInt(response?.data?.bonusValue) * 30) / 100} `}
-                    </span>
+                    </span>{" "}
+                    điểm
                   </Typography>
                   <Typography>
                     Số lần nạp: <span style={{ color: "#f01" }}>3</span> lần trở
