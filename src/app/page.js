@@ -368,7 +368,7 @@ export default function Home() {
                   },
                 ]}
               >
-                <InputNumber controls={false} style={{ width: "100%" }} />
+                <Input style={{ width: "100%" }} />
               </Form.Item>
             </Col>
 
@@ -529,6 +529,23 @@ export default function Home() {
                   1,580 điểm (tiền nạp: 1,580 * 30% = 474 điểm), thành viên có
                   tiền nạp từ 474 điểm trở lên sẽ nhận được phần thưởng VIP
                   tương ứng.
+                </p>
+                <p>
+                  <b>Lời ngỏ: </b>Để chân thành cảm ơn toàn bộ hội viên đã tin
+                  tưởng thương hiệu SHBET, khi ở hệ thống cũ bạn đang là thành
+                  viên VIP SHBET chuyển sang hệ thống mới chúng tôi vẫn bảo lưu
+                  cấp VIP của bạn cho đến khi hoàn thành nâng cấp hệ thống VIP
+                  mới, đồng thời tặng miễn phí phần thưởng VIP khi tham gia trên
+                  hệ thống mới. Bạn hãy nhập đầy đủ và chính xác thông tin để
+                  biết chính xác và{" "}
+                  <a
+                    href="https://live.shbet.win/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    liên hệ chăm sóc khách hàng
+                  </a>{" "}
+                  đăng ký nhận thưởng.
                 </p>
               </Modal>
             </Col>

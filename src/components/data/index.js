@@ -23,14 +23,14 @@ import qs from "qs";
 
 import DraggerUpload from "../dragger";
 import axios from "axios";
-import { api } from "@/helpers/config";
+import { accountAdmin, api } from "@/helpers/config";
 import { API_CUSTOMER_GET_CHECK_BY_DATE } from "@/helpers/url_helper";
 
 const ExcelFile = ReactExport.ExcelFile;
 const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
 const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
 
-export default function DataPage() {
+export default function DataPage({ username }) {
   const [isModalUpOpen, setIsModalUpOpen] = useState(false);
   const [isModalDownOpen, setIsModalDownOpen] = useState(false);
   const [dataSet, setDataSet] = useState([]);
@@ -164,25 +164,28 @@ export default function DataPage() {
 
   return (
     <div>
+      {console.log(username)}
       <Row>
-        <Col xs={24} style={{ textAlign: "center" }}>
-          <Space>
-            <Button
-              type="primary"
-              icon={<CloudUploadOutlined />}
-              onClick={showModalUp}
-            >
-              Upload file excel
-            </Button>
-            <Button
-              type="primary"
-              icon={<CloudDownloadOutlined />}
-              onClick={showModalDown}
-            >
-              Export data excel
-            </Button>
-          </Space>
-        </Col>
+        {username === accountAdmin.username && (
+          <Col xs={24} style={{ textAlign: "center" }}>
+            <Space>
+              <Button
+                type="primary"
+                icon={<CloudUploadOutlined />}
+                onClick={showModalUp}
+              >
+                Upload file excel
+              </Button>
+              <Button
+                type="primary"
+                icon={<CloudDownloadOutlined />}
+                onClick={showModalDown}
+              >
+                Export data excel
+              </Button>
+            </Space>
+          </Col>
+        )}
 
         <Col
           xs={24}

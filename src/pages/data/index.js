@@ -1,20 +1,24 @@
 import React, { useState } from "react";
 import DataPage from "@/components/data";
 import { Button, Form, Input, notification, Typography } from "antd";
-import { account } from "@/helpers/config";
+import { accountAdmin, accountStaff } from "@/helpers/config";
 import { LoginOutlined } from "@ant-design/icons";
 
 export default function DataPages() {
   const [isAuth, setIsAuth] = useState(false);
   const [apiNoti, contextHolder] = notification.useNotification();
+  const [userName, setUserName] = useState("");
 
   const onFinish = (values) => {
     if (
-      values.username === account.username &&
-      account.password === account.password
-    )
+      (values.username === accountAdmin.username &&
+        values.password === accountAdmin.password) ||
+      (values.username === accountStaff.username &&
+        values.password === accountStaff.password)
+    ) {
+      setUserName(values.username);
       setIsAuth(true);
-    else {
+    } else {
       apiNoti["error"]({
         message: "Thất bại",
         description: (
@@ -80,7 +84,7 @@ export default function DataPages() {
               </Form.Item>
             </Form>
           ) : (
-            <DataPage />
+            <DataPage username={userName} />
           )}
         </div>
       </div>

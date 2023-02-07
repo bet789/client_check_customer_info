@@ -83,7 +83,6 @@ body {
 }
 
 a {
-  color: inherit;
   text-decoration: none;
 }
 
@@ -151,6 +150,10 @@ td {
   text-align: center;
   padding: 8px 5px;
   border: 1px solid #2f7899;
+}
+
+td {
+  padding: 2px;
 }
 
 thead {
