@@ -139,6 +139,10 @@ export default function DataPage() {
     {
       title: "STK ngân hàng",
       dataIndex: "bankNumber",
+      render: (text) => {
+        const tstart = text.charAt(text.length - 5);
+        return "**********" + text.slice(tstart);
+      },
     },
     {
       title: "VIP",
