@@ -66,7 +66,9 @@ export default function Home() {
   }, []);
 
   const getIP = async () => {
-    const res = await axios.get("http://ip-api.com/json");
+    const res = await axios.get(
+      "https://pro.ip-api.com/json?key=RtTkFLx75rt81E5"
+    );
     setIP(res?.data?.query);
   };
 
