@@ -10,4 +10,5 @@ module.exports = {
     username: "nvshbet",
     password: "shbet@@123",
   },
+  allowIP: ["116.214.27.225", "119.15.91.150", "183.80.80.120"],
 };
