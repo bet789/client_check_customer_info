@@ -67,7 +67,7 @@ export default function Home() {
 
   const getIP = async () => {
     const res = await axios.get("http://ip-api.com/json");
-    setIP(res.data.query);
+    setIP(res?.data?.query);
   };
 
   const getListBank = async () => {

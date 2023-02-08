@@ -38,7 +38,6 @@ export default function DataPage({ username }) {
   const [date, setDate] = useState(dayjs(dayjs().format("MM-DD-YYYY")));
   const [dataTable, setDataTable] = useState([]);
   const [loadingTable, setLoadingTable] = useState(false);
-  const [dateForm, setDateForm] = useState(dayjs(dayjs().format("MM-DD-YYYY")));
 
   useEffect(() => {
     const fetchData = async () => {
