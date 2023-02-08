@@ -106,7 +106,11 @@ export default function DataPage({ username }) {
 
   const onFinish = async (values) => {
     console.log("Success:", values);
-    onSearch(values);
+    if (values.userName || values.ip || values.fp) {
+      onSearch(values);
+    } else {
+      setDataTable([]);
+    }
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
