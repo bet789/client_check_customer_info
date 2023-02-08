@@ -413,8 +413,9 @@ export default function Home() {
                 </p>
 
                 <p>
-                  <b>※ Nội dung sự kiện:</b> Tất thành đã từng tham gia tại
-                  SHBET đạt từ cấp <span style={{ color: "#f01" }}>VIP 1 </span>
+                  <b>※ Nội dung sự kiện:</b>Tất cả thành viên đã từng tham gia
+                  tại SHBET đạt từ cấp{" "}
+                  <span style={{ color: "#f01" }}>VIP 1 </span>
                   trở lên khi trở lại tham gia tại SHBET sẽ nhận được phần
                   thưởng miễn phí tương ứng tối đa lên đến
                   <span style={{ color: "#f01" }}> 888,800,000 VND</span>. Chi
