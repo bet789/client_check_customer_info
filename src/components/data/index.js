@@ -166,7 +166,7 @@ export default function DataPage({ username }) {
     const _res = await axios.post(
       `${api.API_URL}${API_CHECK_INFO_INTERNAL}?${qs.stringify(_req)}`
     );
-    setDataTableInternal([_res?.data] || []);
+    setDataTableInternal(_res?.data.status !== 0 ? [_res?.data] : []);
     setLoadingTableInternal(false);
   };
 
