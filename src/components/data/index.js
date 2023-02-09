@@ -223,6 +223,7 @@ export default function DataPage({ username }) {
                 type="primary"
                 htmlType="submit"
                 icon={<SearchOutlined />}
+                loading={loadingTable}
               >
                 Search
               </Button>
