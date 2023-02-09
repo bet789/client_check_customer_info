@@ -166,10 +166,6 @@ export default function DataPage({ username }) {
     const _res = await axios.post(
       `${api.API_URL}${API_CHECK_INFO_INTERNAL}?${qs.stringify(_req)}`
     );
-    console.log(
-      "🚀 ~ file: index.js:169 ~ onSearchInternal ~ _res",
-      _res?.data
-    );
     setDataTableInternal([_res?.data] || []);
     setLoadingTableInternal(false);
   };
@@ -241,8 +237,8 @@ export default function DataPage({ username }) {
       title: "STK ngân hàng",
       dataIndex: "bankNumber",
       render: (text) => {
-        const tstart = text?.charAt(text?.length - 5);
-        return "**********" + text?.slice(tstart);
+        const tstart = text.charAt(text.length - 5);
+        return "**********" + text.slice(tstart);
       },
       key: "bankNumber",
     },
