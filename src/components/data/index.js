@@ -17,6 +17,7 @@ import {
   Input,
   Divider,
   Table,
+  Tabs,
 } from "antd";
 import dayjs from "dayjs";
 import qs from "qs";
@@ -24,7 +25,11 @@ import qs from "qs";
 import DraggerUpload from "../dragger";
 import axios from "axios";
 import { accountAdmin, api } from "@/helpers/config";
-import { API_CUSTOMER_GET_CHECK_BY_DATE } from "@/helpers/url_helper";
+import {
+  API_CHECK_INFO_INTERNAL,
+  API_CUSTOMER_GET_CHECK_BY_DATE,
+} from "@/helpers/url_helper";
+import DraggerUploadInternal from "../draggerInternal";
 
 const ExcelFile = ReactExport.ExcelFile;
 const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
@@ -32,12 +37,15 @@ const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
 
 export default function DataPage({ username }) {
   const [isModalUpOpen, setIsModalUpOpen] = useState(false);
+  const [isModalInternalUpOpen, setIsModalInternalUpOpen] = useState(false);
   const [isModalDownOpen, setIsModalDownOpen] = useState(false);
   const [dataSet, setDataSet] = useState([]);
   const [loading, setLoading] = useState(false);
   const [date, setDate] = useState(dayjs(dayjs().format("MM-DD-YYYY")));
   const [dataTable, setDataTable] = useState([]);
   const [loadingTable, setLoadingTable] = useState(false);
+  const [dataTableInternal, setDataTableInternal] = useState([]);
+  const [loadingTableInternal, setLoadingTableInternal] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -87,6 +95,18 @@ export default function DataPage({ username }) {
     setIsModalUpOpen(false);
   };
 
+  const showModalInternalUp = () => {
+    setIsModalInternalUpOpen(true);
+  };
+
+  const handleOkUpInternal = () => {
+    setIsModalInternalUpOpen(false);
+  };
+
+  const handleCancelUpInternal = () => {
+    setIsModalInternalUpOpen(false);
+  };
+
   const showModalDown = () => {
     setIsModalDownOpen(true);
   };
@@ -116,6 +136,18 @@ export default function DataPage({ username }) {
     console.log("Failed:", errorInfo);
   };
 
+  const onFinishInternal = async (values) => {
+    console.log("Success:", values);
+    if (values.userNameInternal) {
+      onSearchInternal(values);
+    } else {
+      setDataTable([]);
+    }
+  };
+  const onFinishFailedInternal = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
+
   const onSearch = async (values) => {
     setLoadingTable(true);
     const _res = await axios.post(
@@ -126,22 +158,42 @@ export default function DataPage({ username }) {
     setLoadingTable(false);
   };
 
+  const onSearchInternal = async (values) => {
+    setLoadingTableInternal(true);
+    const _req = {
+      userName: values.userNameInternal,
+    };
+    const _res = await axios.post(
+      `${api.API_URL}${API_CHECK_INFO_INTERNAL}?${qs.stringify(_req)}`
+    );
+    console.log(
+      "🚀 ~ file: index.js:169 ~ onSearchInternal ~ _res",
+      _res?.data
+    );
+    setDataTableInternal([_res?.data] || []);
+    setLoadingTableInternal(false);
+  };
+
   const columns = [
     {
       title: "Tên tài khoản",
       dataIndex: "userName",
+      key: "userName",
     },
     {
       title: "Họ và tên",
       dataIndex: "fullName",
+      key: "fullName",
     },
     {
       title: "Tên ngân hàng",
       dataIndex: "bankName",
+      key: "bankName",
     },
     {
       title: "STK ngân hàng",
       dataIndex: "bankNumber",
+      key: "bankNumber",
       render: (text) => {
         const tstart = text.charAt(text.length - 5);
         return "**********" + text.slice(tstart);
@@ -150,24 +202,64 @@ export default function DataPage({ username }) {
     {
       title: "VIP",
       dataIndex: "level",
+      key: "level",
     },
     {
       title: "Điểm thưởng",
       dataIndex: "bonusValue",
+      key: "bonusValue",
     },
     {
       title: "IP",
       dataIndex: "ip",
+      key: "ip",
     },
     {
       title: "FP",
       dataIndex: "fp",
+      key: "fp",
+    },
+  ];
+
+  const columnsInternal = [
+    {
+      title: "Tên tài khoản",
+      dataIndex: "userName",
+      key: "userName",
+    },
+    {
+      title: "Họ và tên",
+      dataIndex: "fullName",
+      key: "fullName",
+    },
+    {
+      title: "Tên ngân hàng",
+      dataIndex: "bankName",
+      key: "bankName",
+    },
+    {
+      title: "STK ngân hàng",
+      dataIndex: "bankNumber",
+      render: (text) => {
+        const tstart = text?.charAt(text?.length - 5);
+        return "**********" + text?.slice(tstart);
+      },
+      key: "bankNumber",
+    },
+    {
+      title: "VIP",
+      dataIndex: "level",
+      key: "level",
+    },
+    {
+      title: "Điểm thưởng",
+      dataIndex: "bonusValue",
+      key: "bonusValue",
     },
   ];
 
   return (
-    <div>
-      {console.log(username)}
+    <div style={{ maxWidth: 1320, margin: "0 auto" }}>
       <Row>
         {username === accountAdmin.username && (
           <Col xs={24} style={{ textAlign: "center" }}>
@@ -175,21 +267,31 @@ export default function DataPage({ username }) {
               <Button
                 type="primary"
                 icon={<CloudUploadOutlined />}
+                onClick={showModalInternalUp}
+              >
+                Upload file excel (Nội bộ check)
+              </Button>
+              <Button
+                type="primary"
+                icon={<CloudUploadOutlined />}
                 onClick={showModalUp}
               >
-                Upload file excel
+                Upload file excel (Khách check)
               </Button>
               <Button
                 type="primary"
                 icon={<CloudDownloadOutlined />}
                 onClick={showModalDown}
               >
-                Export data excel
+                Export data excel (Khách check)
               </Button>
             </Space>
           </Col>
         )}
 
+        <Col xs={24} style={{ textAlign: "center" }}>
+          <Typography.Title level={3}>DỮ LIỆU KHÁCH</Typography.Title>
+        </Col>
         <Col
           xs={24}
           style={{
@@ -230,7 +332,6 @@ export default function DataPage({ username }) {
             </Form.Item>
           </Form>
         </Col>
-
         <Col
           xs={24}
           style={{
@@ -241,14 +342,68 @@ export default function DataPage({ username }) {
           }}
         >
           <Table
+            rowKey={(i) => i.userName}
             columns={columns}
             dataSource={dataTable}
             loading={loadingTable}
           />
         </Col>
+        <Divider />
+
+        <Col xs={24} style={{ textAlign: "center" }}>
+          <Typography.Title level={3}>DỮ LIỆU NỘI BỘ</Typography.Title>
+        </Col>
+        <Col
+          xs={24}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginTop: 20,
+          }}
+        >
+          <Form
+            name="form-check-internal"
+            onFinish={onFinishInternal}
+            onFinishFailed={onFinishFailedInternal}
+            autoComplete="off"
+            layout="inline"
+          >
+            <Form.Item label="" name="userNameInternal">
+              <Input placeholder="Nhập tên tài khoản" allowClear />
+            </Form.Item>
+
+            <Form.Item>
+              <Button
+                type="primary"
+                htmlType="submit"
+                icon={<SearchOutlined />}
+                loading={loadingTableInternal}
+              >
+                Search
+              </Button>
+            </Form.Item>
+          </Form>
+        </Col>
+        <Col
+          xs={24}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginTop: 20,
+          }}
+        >
+          <Table
+            rowKey={(i) => i.userName}
+            columns={columnsInternal}
+            dataSource={dataTableInternal}
+            loading={loadingTableInternal}
+          />
+        </Col>
 
         <Modal
-          title="Tải tệp lên"
+          title="Tải tệp lên (Khách check)"
           open={isModalUpOpen}
           onOk={handleOkUp}
           onCancel={handleCancelUp}
@@ -256,6 +411,17 @@ export default function DataPage({ username }) {
           maskClosable={false}
         >
           <DraggerUpload />
+        </Modal>
+
+        <Modal
+          title="Tải tệp lên (Nội bộ check)"
+          open={isModalInternalUpOpen}
+          onOk={handleOkUpInternal}
+          onCancel={handleCancelUpInternal}
+          footer={null}
+          maskClosable={false}
+        >
+          <DraggerUploadInternal />
         </Modal>
 
         <Modal
