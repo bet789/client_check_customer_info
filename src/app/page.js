@@ -390,7 +390,7 @@ export default function Home() {
                 <p>
                   <b>※ Mã: </b>
                   <span style={{ color: "#f01" }}>
-                    <b>VIPSHET</b>
+                    <b>VIPSHBET</b>
                   </span>
                 </p>
                 <p>
