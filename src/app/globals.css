@@ -175,6 +175,17 @@ thead {
   color: #ffffff;
 }
 
+
+
+.table-789bet th,
+.table-789bet td {
+  border: 1px solid #ff7513 !important;
+}
+
+.table-789bet thead {
+  background-image: linear-gradient(to bottom, #ffa05c, #ff7513);
+}
+
 .ant-notification-center {
   position: fixed !important;
   top: 50% !important;

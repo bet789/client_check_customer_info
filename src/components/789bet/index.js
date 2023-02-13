@@ -489,7 +489,7 @@ export default function BET789() {
                 <p>
                   <b>※ Mã: </b>
                   <span style={{ color: "#f01" }}>
-                    <b>VIPSHBET</b>
+                    <b>SVIP</b>
                   </span>
                 </p>
                 <p>
@@ -507,23 +507,23 @@ export default function BET789() {
                     textAlign: "center",
                     fontSize: 20,
                     fontWeight: "bold",
-                    color: "#2f7899",
+                    color: "#ff6a00",
                   }}
                 >
-                  SHBET.COM
+                  789BET.COM
                 </p>
 
                 <p>
                   <b>※ Nội dung sự kiện:</b>Tất cả thành viên đã từng tham gia
-                  tại SHBET đạt từ cấp{" "}
+                  tại 789BET đạt từ cấp{" "}
                   <span style={{ color: "#f01" }}>VIP 1 </span>
-                  trở lên khi trở lại tham gia tại SHBET sẽ nhận được phần
+                  trở lên khi trở lại tham gia tại 789BET sẽ nhận được phần
                   thưởng miễn phí tương ứng tối đa lên đến
                   <span style={{ color: "#f01" }}> 888,800,000 VND</span>. Chi
                   tiết như sau:
                 </p>
 
-                <table>
+                <table className="table-789bet">
                   <thead>
                     <tr>
                       <th>Cấp VIP</th>
@@ -634,14 +634,14 @@ export default function BET789() {
                 </p>
                 <p>
                   <b>Lời ngỏ: </b>Để chân thành cảm ơn toàn bộ hội viên đã tin
-                  tưởng thương hiệu SHBET, khi ở hệ thống cũ bạn đang là thành
-                  viên VIP SHBET chuyển sang hệ thống mới chúng tôi vẫn bảo lưu
+                  tưởng thương hiệu 789BET, khi ở hệ thống cũ bạn đang là thành
+                  viên VIP 789BET chuyển sang hệ thống mới chúng tôi vẫn bảo lưu
                   cấp VIP của bạn cho đến khi hoàn thành nâng cấp hệ thống VIP
                   mới, đồng thời tặng miễn phí phần thưởng VIP khi tham gia trên
                   hệ thống mới. Bạn hãy nhập đầy đủ và chính xác thông tin để
                   biết chính xác và{" "}
                   <a
-                    href="https://live.shbet.win/"
+                    href="https://tawk.to/chat/638c28fcb0d6371309d28305/1gjdo07e2"
                     target="_blank"
                     rel="noreferrer"
                   >
