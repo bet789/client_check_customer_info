@@ -105,6 +105,14 @@ a {
   justify-content: center;
 }
 
+.wrapper.bet789 {
+  background-image: url(../assets/images/bg789.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  align-items: flex-start;
+  padding-top: 50px;
+}
+
 .container {
   padding: 0 10px;
 }
@@ -115,6 +123,12 @@ a {
   border-radius: 12px;
   border: 2px solid #b1eafe;
   max-width: 400px;
+}
+
+.wrapper.bet789 #form-check-customer-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -168,4 +182,78 @@ thead {
   transform: translate(50%, -50%) !important;
   bottom: unset !important;
   margin-inline-end: 0 !important;
+}
+
+.title-789bet {
+  background: -webkit-linear-gradient(#fed946 35%, #f78b1b 55%, #fed946 70%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  font-size: 36px;
+  filter: drop-shadow(2px 2px #1e1a1a);
+}
+
+.title-789bet.title1 {
+  margin-bottom: 20px;
+}
+
+.title-789bet.title2 {
+  font-size: 30px;
+}
+
+.title-789bet.title2:last-child {
+  margin-bottom: 20px;
+}
+
+
+.wrapper.bet789 .box-check-customer-info {
+  border: 2px solid #f6a414;
+  box-shadow: rgb(0 0 0 / 18%) 0px 2px 4px;
+}
+
+
+.btn-789bet {
+  background-image: linear-gradient(180deg, #ff8800, #fd423a) !important;
+  color: #ffffff !important;
+}
+
+.btn-789bet:hover {
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+}
+
+.wrapper.bet789 a {
+  color: #fe4430 !important;
+}
+
+.wrapper.bet789 a:hover {
+  color: #ff2810 !important;
+}
+
+.btn-animation-zoom-in-out {
+  animation: animation_zoom_in_out .5s linear infinite;
+}
+
+@keyframes animation_zoom_in_out {
+
+  0%,
+  100% {
+    transform: scale(1.1);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+}
+
+
+@media screen and (max-width: 767.98px) {
+  .title-789bet.title1 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  .title-789bet.title2 {
+    font-size: 19px;
+  }
 }

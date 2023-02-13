@@ -23,35 +23,36 @@ const ClientJs = dynamic(() => import("../ClientJs"), {
   ssr: false,
 });
 
-import { api } from "@/helpers/config";
+import { api, siteName } from "@/helpers/config";
 import {
   API_CHECK_CUSTOMER_INFO,
   API_CUSTOMER_LISTBANK,
+  API_CUSTOMER_REGISTER,
 } from "@/helpers/url_helper";
 
-import logo from "@/assets/images/logo.png";
-import vip1 from "@/assets/images/icon_vip/vip1.png";
-import vip2 from "@/assets/images/icon_vip/vip2.png";
-import vip3 from "@/assets/images/icon_vip/vip3.png";
-import vip4 from "@/assets/images/icon_vip/vip4.png";
-import vip5 from "@/assets/images/icon_vip/vip5.png";
-import vip6 from "@/assets/images/icon_vip/vip6.png";
-import vip7 from "@/assets/images/icon_vip/vip7.png";
-import vip8 from "@/assets/images/icon_vip/vip8.png";
-import vip9 from "@/assets/images/icon_vip/vip9.png";
-import vip10 from "@/assets/images/icon_vip/vip10.png";
-import vip11 from "@/assets/images/icon_vip/vip11.png";
-import vip12 from "@/assets/images/icon_vip/vip12.png";
-import vip13 from "@/assets/images/icon_vip/vip13.png";
-import vip14 from "@/assets/images/icon_vip/vip14.png";
-import vip15 from "@/assets/images/icon_vip/vip15.png";
-import vip16 from "@/assets/images/icon_vip/vip16.png";
-import vip17 from "@/assets/images/icon_vip/vip17.png";
-import vip18 from "@/assets/images/icon_vip/vip18.png";
-import vip19 from "@/assets/images/icon_vip/vip19.png";
-import vip20 from "@/assets/images/icon_vip/vip20.png";
+import logo from "@/assets/images/logo789bet.png";
+import vip1 from "@/assets/images/icon_vip_789bet/vip1.png";
+import vip2 from "@/assets/images/icon_vip_789bet/vip2.png";
+import vip3 from "@/assets/images/icon_vip_789bet/vip3.png";
+import vip4 from "@/assets/images/icon_vip_789bet/vip4.png";
+import vip5 from "@/assets/images/icon_vip_789bet/vip5.png";
+import vip6 from "@/assets/images/icon_vip_789bet/vip6.png";
+import vip7 from "@/assets/images/icon_vip_789bet/vip7.png";
+import vip8 from "@/assets/images/icon_vip_789bet/vip8.png";
+import vip9 from "@/assets/images/icon_vip_789bet/vip9.png";
+import vip10 from "@/assets/images/icon_vip_789bet/vip10.png";
+import vip11 from "@/assets/images/icon_vip_789bet/vip11.png";
+import vip12 from "@/assets/images/icon_vip_789bet/vip12.png";
+import vip13 from "@/assets/images/icon_vip_789bet/vip13.png";
+import vip14 from "@/assets/images/icon_vip_789bet/vip14.png";
+import vip15 from "@/assets/images/icon_vip_789bet/vip15.png";
+import vip16 from "@/assets/images/icon_vip_789bet/vip16.png";
+import vip17 from "@/assets/images/icon_vip_789bet/vip17.png";
+import vip18 from "@/assets/images/icon_vip_789bet/vip18.png";
+import vip19 from "@/assets/images/icon_vip_789bet/vip19.png";
+import vip20 from "@/assets/images/icon_vip_789bet/vip20.png";
 
-export default function SHBET() {
+export default function BET789() {
   const [form] = Form.useForm();
   const [fingerPrint, setFingerPrint] = useState();
   const [loading, setLoading] = useState(false);
@@ -95,6 +96,7 @@ export default function SHBET() {
         bankName: values.bankName,
         fp: fingerPrint,
         ip: ip,
+        siteName: siteName,
       };
 
       await axios
@@ -131,7 +133,7 @@ export default function SHBET() {
           } else {
             setLoading(false);
             apiNoti["success"]({
-              duration: 5000,
+              // duration: 5000,
               message: "Thành công",
               placement: "center",
               description: (
@@ -145,7 +147,7 @@ export default function SHBET() {
                     Thưởng miễn phí: {response?.data?.bonusValue} điểm - Hết hạn
                     sau: 30/03/2023
                   </Typography>
-                  <Typography>
+                  {/* <Typography>
                     <a
                       href="https://live.shbet.win/"
                       target="_blank"
@@ -153,7 +155,7 @@ export default function SHBET() {
                     >
                       Liên hệ nhận thưởng
                     </a>
-                  </Typography>
+                  </Typography> */}
                   <Typography>Bạn cần hoàn thành điều kiện sau:</Typography>
                   <Typography>
                     Số tiền nạp:
@@ -166,6 +168,19 @@ export default function SHBET() {
                     Số lần nạp: <span style={{ color: "#f01" }}>3</span> lần trở
                     lên
                   </Typography>
+                  <Typography>
+                    KHI ĐẠT ĐỦ ĐIỀU KIỆN TRÊN VUI LÒNG CLICK VÀO ĐĂNG KÝ NHẬN
+                    THƯỞNG, HỆ THỐNG SẼ KIỂM TRA VÀ XỬ LÝ!
+                  </Typography>
+                  <Button
+                    className="btn-789bet btn-animation-zoom-in-out"
+                    onClick={() => onRegister(response?.data?.userName)}
+                    style={{
+                      marginTop: 10,
+                    }}
+                  >
+                    ĐĂNG KÝ NHẬN THƯỞNG
+                  </Button>
                 </>
               ),
             });
@@ -180,6 +195,76 @@ export default function SHBET() {
             placement: "center",
           });
         });
+    }
+  };
+
+  const onRegister = async (username) => {
+    const _req = {
+      userName: username,
+      fp: fingerPrint,
+      ip: ip,
+      adminName: "",
+      siteName: siteName,
+    };
+
+    const _res = await axios.post(
+      `${api.API_URL}${API_CUSTOMER_REGISTER}?${qs.stringify(_req)}`
+    );
+
+    if (_res?.data?.status === 0) {
+      return apiNoti["success"]({
+        message: "Thành công",
+        placement: "center",
+        description: (
+          <>
+            <Typography>Đăng ký nhận thưởng thành công!</Typography>
+          </>
+        ),
+      });
+    } else if (_res?.data?.status === 1) {
+      return apiNoti["warning"]({
+        message: "Cảnh báo",
+        placement: "center",
+        description: (
+          <>
+            <Typography>Bạn đã đăng ký nhận thưởng!</Typography>
+          </>
+        ),
+      });
+    } else if (_res?.data?.status === 2) {
+      return apiNoti["warning"]({
+        message: "Cảnh báo",
+        placement: "center",
+        description: (
+          <>
+            <Typography>Hệ thống đang xử lý!</Typography>
+          </>
+        ),
+      });
+    } else if (_res?.data?.status === 3) {
+      return apiNoti["warning"]({
+        message: "Cảnh báo",
+        placement: "center",
+        description: (
+          <>
+            <Typography>
+              Số lần nạp và tổng số tiền nạp chưa đạt yêu cầu!
+            </Typography>
+          </>
+        ),
+      });
+    } else {
+      return apiNoti["error"]({
+        message: "Lỗi",
+        placement: "center",
+        description: (
+          <>
+            <Typography>
+              Tài khoản của bạn không có trong trương chình khuyến mãi này!
+            </Typography>
+          </>
+        ),
+      });
     }
   };
 
@@ -264,18 +349,34 @@ export default function SHBET() {
   const showModal = () => {
     setIsModalOpen(true);
   };
+
   const handleOk = () => {
     setIsModalOpen(false);
   };
+
   const handleCancel = () => {
     setIsModalOpen(false);
   };
 
   return (
-    <div className="wrapper">
+    <div className="wrapper bet789">
       {contextHolder}
       <ClientJs setFingerPrint={setFingerPrint} />
       <div className="container">
+        <Row>
+          <Col xs={24} style={{ textAlign: "center" }}>
+            <Image src={logo} alt="789bet" width={200} />
+          </Col>
+          <Col xs={24} style={{ textAlign: "center" }}>
+            <h1 className="title-789bet title1">
+              CASINO - TÔI CHỈ CHỌN 789BET
+            </h1>
+            <h2 className="title-789bet title2">MỘT CHỮ TÍN VẠN CHỮ TIN</h2>
+            <h2 className="title-789bet title2">
+              Chào mừng thành viên trở lại với 789BET
+            </h2>
+          </Col>
+        </Row>
         <Form
           form={form}
           name="form-check-customer-info"
@@ -285,9 +386,7 @@ export default function SHBET() {
           layout="vertical"
         >
           <Row gutter={[4, 4]} className="box-check-customer-info">
-            <Col xs={24} className="text-center">
-              <Image src={logo} alt="shbet" />
-            </Col>
+            <Col xs={24} className="text-center"></Col>
             <Col xs={24}>
               <Form.Item
                 label="Tài khoản"
@@ -556,7 +655,7 @@ export default function SHBET() {
             <Col xs={24} className="text-center">
               <Form.Item>
                 <Button
-                  className="btn-shbet"
+                  className="btn-789bet"
                   htmlType="submit"
                   loading={loading}
                 >

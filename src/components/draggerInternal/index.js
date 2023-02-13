@@ -1,7 +1,7 @@
 import React from "react";
 import { message, Upload } from "antd";
 import { InboxOutlined } from "@ant-design/icons";
-import { api } from "@/helpers/config";
+import { api, siteName } from "@/helpers/config";
 import { API_CUSTOMER_UPLOAD_INTERNAL } from "@/helpers/url_helper";
 
 const { Dragger } = Upload;
@@ -37,7 +37,7 @@ const propsUpload = {
     fmData.append("fromFiles", file);
     try {
       const response = await fetch(
-        `${api.API_URL}${API_CUSTOMER_UPLOAD_INTERNAL}`,
+        `${api.API_URL}${API_CUSTOMER_UPLOAD_INTERNAL}?siteName=${siteName}`,
         {
           method: "POST",
           headers: {
