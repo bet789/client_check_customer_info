@@ -307,12 +307,12 @@ export default function Data789BetPage({ username }) {
       },
     },
     {
-      title: "CSKH",
+      title: "Người xử lý",
       dataIndex: "adminName",
       key: "adminName",
     },
     {
-      title: "Hành động",
+      title: "",
       dataIndex: "",
       key: "x",
       render: (_, record) => (
