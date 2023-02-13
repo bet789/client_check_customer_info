@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Data789BetPage from "@/components/data789bet";
 import { Button, Form, Input, notification, Typography } from "antd";
-import { accountAdmin789BET, allowIP789BET } from "@/helpers/config";
+import {
+  accountAdmin789BET,
+  allowIP789BET,
+  accountStaff789BET,
+} from "@/helpers/config";
 import { LoginOutlined } from "@ant-design/icons";
 import axios from "axios";
 
@@ -23,9 +27,17 @@ export default function Admin789BET() {
   };
 
   const onFinish = (values) => {
+    console.log("🚀 ~ file: index.js:30 ~ onFinish ~ values", values);
+    console.log(accountStaff789BET[0].username);
     if (
-      values.username === accountAdmin789BET.username &&
-      values.password === accountAdmin789BET.password
+      (values.username === accountAdmin789BET.username &&
+        values.password === accountAdmin789BET.password) ||
+      (values.username === accountStaff789BET[0].username &&
+        values.password === accountStaff789BET[0].password) ||
+      (values.username === accountStaff789BET[1].username &&
+        values.password === accountStaff789BET[1].password) ||
+      (values.username === accountStaff789BET[2].username &&
+        values.password === accountStaff789BET[2].password)
     ) {
       setUserName(values.username);
       setIsAuth(true);
@@ -34,7 +46,8 @@ export default function Admin789BET() {
         message: "Thất bại",
         description: (
           <Typography>
-            Vui lòng liên hệ bộ phận kỹ thuật để được cấp tài khoản!
+            Vui lòng kiểm tra lại tài khoản và mật khẩu hoặc liên hệ bộ phận kỹ
+            thuật để được cấp tài khoản!
           </Typography>
         ),
       });
