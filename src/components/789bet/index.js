@@ -14,10 +14,12 @@ import {
   Typography,
   Avatar,
   Modal,
+  Space,
 } from "antd";
 import dynamic from "next/dynamic";
 import axios from "axios";
 import qs from "qs";
+import dayjs from "dayjs";
 
 const ClientJs = dynamic(() => import("../ClientJs"), {
   ssr: false,
@@ -26,6 +28,7 @@ const ClientJs = dynamic(() => import("../ClientJs"), {
 import { api, siteName } from "@/helpers/config";
 import {
   API_CHECK_CUSTOMER_INFO,
+  API_CUSTOMER_CHANGE_STATUS_HISTORY,
   API_CUSTOMER_LISTBANK,
   API_CUSTOMER_REGISTER,
 } from "@/helpers/url_helper";
@@ -59,7 +62,9 @@ export default function BET789() {
   const [apiNoti, contextHolder] = notification.useNotification();
   const [listBank, setListBank] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpenHistory, setIsModalOpenHistory] = useState(false);
   const [ip, setIP] = useState("");
+  const [dataHistory, setDataHistory] = useState([]);
 
   useEffect(() => {
     getListBank();
@@ -172,15 +177,31 @@ export default function BET789() {
                     KHI ĐẠT ĐỦ ĐIỀU KIỆN TRÊN VUI LÒNG CLICK VÀO ĐĂNG KÝ NHẬN
                     THƯỞNG, HỆ THỐNG SẼ KIỂM TRA VÀ XỬ LÝ!
                   </Typography>
-                  <Button
-                    className="btn-789bet btn-animation-zoom-in-out"
-                    onClick={() => onRegister(response?.data?.userName)}
-                    style={{
-                      marginTop: 10,
-                    }}
-                  >
-                    ĐĂNG KÝ NHẬN THƯỞNG
-                  </Button>
+                  <Space>
+                    {response?.data?.trackingStatus !== 1 ? (
+                      <Button
+                        className="btn-789bet "
+                        onClick={() => onRegister(response?.data?.userName)}
+                        style={{
+                          marginTop: 10,
+                        }}
+                      >
+                        ĐĂNG KÝ NHẬN THƯỞNG
+                      </Button>
+                    ) : (
+                      ""
+                    )}
+
+                    <Button
+                      className="btn-789bet "
+                      onClick={() => handleHistory(response?.data?.userName)}
+                      style={{
+                        marginTop: 10,
+                      }}
+                    >
+                      LỊCH SỬ
+                    </Button>
+                  </Space>
                 </>
               ),
             });
@@ -196,6 +217,14 @@ export default function BET789() {
           });
         });
     }
+  };
+
+  const handleHistory = async (userName) => {
+    const _res = await axios.post(
+      `${api.API_URL}${API_CUSTOMER_CHANGE_STATUS_HISTORY}?userName=${userName}&siteName=${siteName}`
+    );
+    setDataHistory(_res?.data || []);
+    setIsModalOpenHistory(true);
   };
 
   const onRegister = async (username) => {
@@ -249,6 +278,18 @@ export default function BET789() {
           <>
             <Typography>
               Số lần nạp và tổng số tiền nạp chưa đạt yêu cầu!
+            </Typography>
+          </>
+        ),
+      });
+    } else if (_res?.data?.status === 4) {
+      return apiNoti["warning"]({
+        message: "Cảnh báo",
+        placement: "center",
+        description: (
+          <>
+            <Typography>
+              Tài khoản của bạn không được phép nhận khuyến mãi này!
             </Typography>
           </>
         ),
@@ -356,6 +397,14 @@ export default function BET789() {
 
   const handleCancel = () => {
     setIsModalOpen(false);
+  };
+
+  const handleOkHistory = () => {
+    setIsModalOpenHistory(false);
+  };
+
+  const handleCancelHistory = () => {
+    setIsModalOpenHistory(false);
   };
 
   return (
@@ -478,7 +527,7 @@ export default function BET789() {
                 Điều khoản và chính sách
               </Typography.Link>
               <Modal
-                title="VIỆT KIỀU HỒI HƯƠNG"
+                title="Cho Đi Một Chữ Tín - Nhận Lại Vạn Chữ Tín"
                 open={isModalOpen}
                 onOk={handleOk}
                 footer={null}
@@ -486,6 +535,10 @@ export default function BET789() {
                 width={700}
                 style={{ top: 20 }}
               >
+                <p>
+                  Chân thành cảm ơn quý hội viên đã luôn tin tưởng và ủng hộ
+                  789BET
+                </p>
                 <p>
                   <b>※ Mã: </b>
                   <span style={{ color: "#f01" }}>
@@ -534,84 +587,84 @@ export default function BET789() {
                   <tbody>
                     <tr>
                       <td>1</td>
-                      <td>25</td>
+                      <td>28</td>
                       <td rowSpan={20}>1 Vòng</td>
                     </tr>
                     <tr>
                       <td>2</td>
-                      <td>40</td>
+                      <td>38</td>
                     </tr>
                     <tr>
                       <td>3</td>
-                      <td>80</td>
+                      <td>68</td>
                     </tr>
                     <tr>
                       <td>4</td>
-                      <td>160</td>
+                      <td>288</td>
                     </tr>
                     <tr>
                       <td>5</td>
-                      <td>480 </td>
+                      <td>528</td>
                     </tr>
                     <tr>
                       <td>6</td>
-                      <td>1,580 </td>
+                      <td>1.088</td>
                     </tr>
                     <tr>
                       <td>7</td>
-                      <td>2,080 </td>
+                      <td>1.588</td>
                     </tr>
                     <tr>
                       <td>8</td>
-                      <td>3,880 </td>
+                      <td>2.288</td>
                     </tr>
                     <tr>
                       <td>9</td>
-                      <td>6,800 </td>
+                      <td>3.888</td>
                     </tr>
                     <tr>
                       <td>10</td>
-                      <td>9,800 </td>
+                      <td>5.288</td>
                     </tr>
                     <tr>
                       <td>11</td>
-                      <td>15,800 </td>
+                      <td>5.888</td>
                     </tr>
                     <tr>
                       <td>12</td>
-                      <td>20,800 </td>
+                      <td>6.888</td>
                     </tr>
                     <tr>
                       <td>13</td>
-                      <td>28,800 </td>
+                      <td> 8.888</td>
                     </tr>
                     <tr>
                       <td>14</td>
-                      <td>36,800 </td>
+                      <td>10.888</td>
                     </tr>
                     <tr>
                       <td>15</td>
-                      <td>58,880 </td>
+                      <td>12.888</td>
                     </tr>
                     <tr>
                       <td>16</td>
-                      <td>128,800</td>
+                      <td>18.888</td>
                     </tr>
                     <tr>
                       <td>17</td>
-                      <td>158,800 </td>
+                      <td>18.888</td>
                     </tr>
                     <tr>
                       <td>18</td>
-                      <td>388,800 </td>
+                      <td>68.888</td>
                     </tr>
                     <tr>
                       <td>19</td>
-                      <td>588,800 </td>
+                      <td>88.888</td>
                     </tr>
                     <tr>
                       <td>20</td>
-                      <td>888,800 </td>
+                      <td>128.888</td>
                     </tr>
                   </tbody>
                 </table>
@@ -665,6 +718,28 @@ export default function BET789() {
             </Col>
           </Row>
         </Form>
+
+        <Modal
+          title="Lịch sử đăng ký nhận thưởng"
+          open={isModalOpenHistory}
+          onOk={handleOkHistory}
+          onCancel={handleCancelHistory}
+          footer={null}
+          style={{ top: 20 }}
+        >
+          {dataHistory &&
+            dataHistory.reverse().map((item, i) => {
+              return (
+                <>
+                  <Typography key={i}>
+                    {`Lần ${i + 1}: ${dayjs(item.createdDate)
+                      .locale("vn")
+                      .format("DD/MM/YYYY HH:mm")}`}
+                  </Typography>
+                </>
+              );
+            })}
+        </Modal>
       </div>
     </div>
   );

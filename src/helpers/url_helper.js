@@ -6,3 +6,5 @@ export const API_CUSTOMER_UPLOAD_INTERNAL = "/Customer/upload-2";
 export const API_CUSTOMER_GET_CHECK_BY_DATE = "/Customer/getcheckbydate";
 export const API_CUSTOMER_REGISTER = "/Customer/register";
 export const API_CUSTOMER_CHANGE_STATUS = "/Customer/changestatus";
+export const API_CUSTOMER_CHANGE_STATUS_HISTORY =
+  "/Customer/change-status-history";

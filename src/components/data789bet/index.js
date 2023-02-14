@@ -50,7 +50,7 @@ export default function Data789BetPage({ username }) {
   const [loadingTable, setLoadingTable] = useState(false);
   const [dataTableInternal, setDataTableInternal] = useState([]);
   const [loadingTableInternal, setLoadingTableInternal] = useState(false);
-  const [status, setStatus] = useState("0");
+  const [status, setStatus] = useState("-1");
   const [apiNoti, contextHolder] = notification.useNotification();
 
   useEffect(() => {
@@ -133,7 +133,13 @@ export default function Data789BetPage({ username }) {
   const onFinish = async (values) => {
     console.log("Success:", values);
     if (values.userName || values.ip || values.fp || status) {
-      onSearch(values);
+      const _req = {
+        userName: values.userName,
+        ip: values.ip,
+        fp: values.fp,
+        status: values.status ? values.status : status,
+      };
+      onSearch(_req);
     } else {
       setDataTable([]);
     }
@@ -145,7 +151,7 @@ export default function Data789BetPage({ username }) {
 
   const onFinishInternal = async (values) => {
     console.log("Success:", values);
-    if (values.userNameInternal) {
+    if (values.statusInternal) {
       onSearchInternal(values);
     } else {
       setDataTable([]);
@@ -161,7 +167,7 @@ export default function Data789BetPage({ username }) {
     const _res = await axios.post(
       `${api.API_URL}${API_CUSTOMER_GET_CHECK_BY_DATE}?${qs.stringify(
         values
-      )}&status=${status ? status : ""}&siteName=${siteName}`
+      )}&siteName=${siteName}`
     );
 
     setDataTable(_res?.data?.data || []);
@@ -213,6 +219,12 @@ export default function Data789BetPage({ username }) {
       return apiNoti["success"]({
         message: "Thành công",
         description: <Typography>Từ chối đơn thành công!</Typography>,
+      });
+    } else if (_res?.data?.success && _res?.data?.status === 4) {
+      onSearch();
+      return apiNoti["success"]({
+        message: "Thành công",
+        description: <Typography>Đưa vào danh sách đen thành công!</Typography>,
       });
     } else if (_res?.data?.success && _res?.data?.status === 1) {
       onSearch();
@@ -274,6 +286,11 @@ export default function Data789BetPage({ username }) {
       key: "fp",
     },
     {
+      title: "Số lần ĐKNT",
+      dataIndex: "checkCount",
+      key: "checkCount",
+    },
+    {
       title: "Trạng thái",
       dataIndex: "status",
       key: "status",
@@ -289,6 +306,8 @@ export default function Data789BetPage({ username }) {
                 ? "purple"
                 : text === 3
                 ? "red"
+                : text === 4
+                ? "black"
                 : ""
             }
             key={text}
@@ -301,6 +320,8 @@ export default function Data789BetPage({ username }) {
               ? "KHÓA ĐƠN"
               : text === 3
               ? "TỪ CHỐI"
+              : text === 4
+              ? "DS ĐEN"
               : ""}
           </Tag>
         );
@@ -318,9 +339,20 @@ export default function Data789BetPage({ username }) {
       render: (_, record) => (
         <Space>
           {_.status === 0 ? (
-            <Button size="small" onClick={() => onChangeStatus(_.userName, 2)}>
-              KHÓA ĐƠN
-            </Button>
+            <>
+              <Button
+                size="small"
+                onClick={() => onChangeStatus(_.userName, 2)}
+              >
+                KHÓA ĐƠN
+              </Button>
+              <Button
+                size="small"
+                onClick={() => onChangeStatus(_.userName, 4)}
+              >
+                ĐƯA VÀO DS ĐEN
+              </Button>
+            </>
           ) : _.status === 2 ? (
             <>
               <Button
@@ -441,11 +473,15 @@ export default function Data789BetPage({ username }) {
                 </Form.Item>
                 <Form.Item label="" name="status">
                   <Select
-                    defaultValue="0"
+                    defaultValue="-1"
                     onChange={handleChangeStatus}
                     style={{ width: 120 }}
                     allowClear
                     options={[
+                      {
+                        value: "-1",
+                        label: "Tất cả",
+                      },
                       {
                         value: "0",
                         label: "Đang chờ",
@@ -461,6 +497,10 @@ export default function Data789BetPage({ username }) {
                       {
                         value: "3",
                         label: "Từ chối",
+                      },
+                      {
+                        value: "4",
+                        label: "DS đen",
                       },
                     ]}
                   />
