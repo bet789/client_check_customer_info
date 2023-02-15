@@ -525,7 +525,7 @@ export default function SHBET() {
                 <p> - Số tiền nạp phải đạt 30% tiền thưởng.</p>
                 <p>
                   - Tài khoản từ ngày 14/01/2023 trở về sau có thay đổi thông
-                  tin ngân hàng không được tham gia chương trình ngày.
+                  tin ngân hàng không được tham gia chương trình này.
                 </p>
                 <p>
                   <b>※ Ví dụ: </b>Thành viên có VIP 6 nhận thưởng miễn phí là

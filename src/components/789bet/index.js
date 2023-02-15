@@ -294,6 +294,18 @@ export default function BET789() {
           </>
         ),
       });
+    } else if (_res?.data?.status === 5) {
+      return apiNoti["warning"]({
+        message: "Cảnh báo",
+        placement: "center",
+        description: (
+          <>
+            <Typography>
+              Vui lòng kiểm tra lại thông tin tài khoản ngân hàng!
+            </Typography>
+          </>
+        ),
+      });
     } else {
       return apiNoti["error"]({
         message: "Lỗi",
@@ -572,7 +584,7 @@ export default function BET789() {
                   <span style={{ color: "#f01" }}>VIP 1 </span>
                   trở lên khi trở lại tham gia tại 789BET sẽ nhận được phần
                   thưởng miễn phí tương ứng tối đa lên đến
-                  <span style={{ color: "#f01" }}> 888,800,000 VND</span>. Chi
+                  <span style={{ color: "#f01" }}> 128.888.000 VND</span>. Chi
                   tiết như sau:
                 </p>
 
@@ -677,7 +689,7 @@ export default function BET789() {
                 <p> - Số tiền nạp phải đạt 30% tiền thưởng.</p>
                 <p>
                   - Tài khoản từ ngày 14/01/2023 trở về sau có thay đổi thông
-                  tin ngân hàng không được tham gia chương trình ngày.
+                  tin ngân hàng không được tham gia chương trình này.
                 </p>
                 <p>
                   <b>※ Ví dụ: </b>Thành viên có VIP 6 nhận thưởng miễn phí là
@@ -727,7 +739,7 @@ export default function BET789() {
           footer={null}
           style={{ top: 20 }}
         >
-          {dataHistory &&
+          {dataHistory && dataHistory.length > 0 ? (
             dataHistory.reverse().map((item, i) => {
               return (
                 <>
@@ -738,7 +750,10 @@ export default function BET789() {
                   </Typography>
                 </>
               );
-            })}
+            })
+          ) : (
+            <Typography>Bạn chưa đăng ký nhận thưởng!</Typography>
+          )}
         </Modal>
       </div>
     </div>
