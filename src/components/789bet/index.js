@@ -232,7 +232,7 @@ export default function BET789() {
       userName: username,
       fp: fingerPrint,
       ip: ip,
-      adminName: "",
+      bankName: form.getFieldValue().bankName,
       siteName: siteName,
     };
 
