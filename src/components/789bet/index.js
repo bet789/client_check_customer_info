@@ -554,7 +554,7 @@ export default function BET789() {
                   </span>
                 </p>
                 <p>
-                  <b>※ Thời gian bắt đầu:</b> 00:00:00 08/02/2023 (Giờ hệ thống)
+                  <b>※ Thời gian bắt đầu:</b> 00:00:00 16/02/2023 (Giờ hệ thống)
                 </p>
                 <p>
                   <b>※ Thời gian kết thúc:</b> Cho đến khi có thông báo chính
