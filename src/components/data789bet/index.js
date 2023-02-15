@@ -232,6 +232,12 @@ export default function Data789BetPage({ username }) {
         message: "Thành công",
         description: <Typography>Xử lý đơn thành công!</Typography>,
       });
+    } else if (_res?.data?.success && _res?.data?.status === 0) {
+      onSearch();
+      return apiNoti["success"]({
+        message: "Thành công",
+        description: <Typography>Gỡ khỏi danh sách đen thành công!</Typography>,
+      });
     } else if (!_res?.data?.success) {
       return apiNoti["error"]({
         message: "Thất bại",
@@ -368,6 +374,10 @@ export default function Data789BetPage({ username }) {
                 XỬ LÝ XONG
               </Button>
             </>
+          ) : _.status === 4 ? (
+            <Button size="small" onClick={() => onChangeStatus(_.userName, 0)}>
+              GỠ DS ĐEN
+            </Button>
           ) : (
             ""
           )}
