@@ -267,8 +267,7 @@ export default function Data789BetPage({ username }) {
       dataIndex: "bankNumber",
       key: "bankNumber",
       render: (text) => {
-        const tstart = text.charAt(text.length - 5);
-        return "**********" + text.slice(tstart);
+        return "**********" + text.slice(text.length - 4, text.length);
       },
     },
     {
@@ -405,11 +404,10 @@ export default function Data789BetPage({ username }) {
     {
       title: "STK ngân hàng",
       dataIndex: "bankNumber",
-      render: (text) => {
-        const tstart = text.charAt(text.length - 5);
-        return "**********" + text.slice(tstart);
-      },
       key: "bankNumber",
+      render: (text) => {
+        return "**********" + text.slice(text.length - 4, text.length);
+      },
     },
     {
       title: "VIP",
