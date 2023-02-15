@@ -152,15 +152,6 @@ export default function BET789() {
                     Thưởng miễn phí: {response?.data?.bonusValue} điểm - Hết hạn
                     sau: 30/03/2023
                   </Typography>
-                  {/* <Typography>
-                    <a
-                      href="https://live.shbet.win/"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Liên hệ nhận thưởng
-                    </a>
-                  </Typography> */}
                   <Typography>Bạn cần hoàn thành điều kiện sau:</Typography>
                   <Typography>
                     Số tiền nạp:
@@ -687,7 +678,7 @@ export default function BET789() {
                 </table>
 
                 <p>
-                  <b>※ Điều kiện nhận thưởng:</b> (tính từ ngày 08/02/2023 trở
+                  <b>※ Điều kiện nhận thưởng:</b> (tính từ ngày 16/02/2023 trở
                   về sau)
                 </p>
                 <p> - Có từ 3 lần nạp tiền trở lên.</p>
@@ -697,9 +688,9 @@ export default function BET789() {
                   tin ngân hàng không được tham gia chương trình này.
                 </p>
                 <p>
-                  <b>※ Ví dụ: </b>Thành viên có VIP 6 nhận thưởng miễn phí là
-                  1,580 điểm (tiền nạp: 1,580 * 30% = 474 điểm), thành viên có
-                  tiền nạp từ 474 điểm trở lên sẽ nhận được phần thưởng VIP
+                  <b>※ Ví dụ: </b>Thành viên có VIP 8 nhận thưởng miễn phí là
+                  2,288 điểm (tiền nạp: 2,288 * 30% = 686,4 điểm), thành viên có
+                  tiền nạp từ 686,4 điểm trở lên sẽ nhận được phần thưởng VIP
                   tương ứng.
                 </p>
                 <p>
