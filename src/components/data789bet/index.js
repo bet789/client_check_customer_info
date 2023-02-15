@@ -151,7 +151,7 @@ export default function Data789BetPage({ username }) {
 
   const onFinishInternal = async (values) => {
     console.log("Success:", values);
-    if (values.statusInternal) {
+    if (values.userNameInternal) {
       onSearchInternal(values);
     } else {
       setDataTable([]);
