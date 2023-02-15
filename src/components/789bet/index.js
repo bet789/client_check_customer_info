@@ -220,8 +220,13 @@ export default function BET789() {
   };
 
   const handleHistory = async (userName) => {
+    const _req = {
+      userName: userName,
+      siteName: siteName,
+      timeZone: new Date().getTimezoneOffset(),
+    };
     const _res = await axios.post(
-      `${api.API_URL}${API_CUSTOMER_CHANGE_STATUS_HISTORY}?userName=${userName}&siteName=${siteName}`
+      `${api.API_URL}${API_CUSTOMER_CHANGE_STATUS_HISTORY}${qs.stringify(_req)}`
     );
     setDataHistory(_res?.data || []);
     setIsModalOpenHistory(true);
@@ -739,14 +744,15 @@ export default function BET789() {
           footer={null}
           style={{ top: 20 }}
         >
+          {console.log(dataHistory)}
           {dataHistory && dataHistory.length > 0 ? (
             dataHistory.reverse().map((item, i) => {
               return (
                 <>
                   <Typography key={i}>
-                    {`Lần ${i + 1}: ${dayjs(item.createdDate)
-                      .locale("vn")
-                      .format("DD/MM/YYYY HH:mm")}`}
+                    {`Lần ${i + 1}: ${dayjs(item.createdDate).format(
+                      "DD/MM/YYYY HH:mm"
+                    )}`}
                   </Typography>
                 </>
               );
