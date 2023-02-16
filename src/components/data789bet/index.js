@@ -251,6 +251,9 @@ export default function Data789BetPage({ username }) {
       title: "Tên tài khoản",
       dataIndex: "userName",
       key: "userName",
+      render: (text) => {
+        return <Typography.Paragraph copyable>{text}</Typography.Paragraph>;
+      },
     },
     {
       title: "Họ và tên",
@@ -279,6 +282,9 @@ export default function Data789BetPage({ username }) {
       title: "Điểm thưởng",
       dataIndex: "bonusValue",
       key: "bonusValue",
+      render: (text) => {
+        return <Typography.Paragraph copyable>{text}</Typography.Paragraph>;
+      },
     },
     {
       title: "IP",

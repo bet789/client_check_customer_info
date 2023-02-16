@@ -217,7 +217,9 @@ export default function BET789() {
       timeZone: new Date().getTimezoneOffset(),
     };
     const _res = await axios.post(
-      `${api.API_URL}${API_CUSTOMER_CHANGE_STATUS_HISTORY}${qs.stringify(_req)}`
+      `${api.API_URL}${API_CUSTOMER_CHANGE_STATUS_HISTORY}?${qs.stringify(
+        _req
+      )}`
     );
     setDataHistory(_res?.data || []);
     setIsModalOpenHistory(true);
