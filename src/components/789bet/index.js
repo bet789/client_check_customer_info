@@ -745,7 +745,17 @@ export default function BET789() {
                   <Typography key={i}>
                     {`Lần ${i + 1}: ${dayjs(item.createdDate).format(
                       "DD/MM/YYYY HH:mm"
-                    )}`}
+                    )} ${
+                      item?.bonusStatus === 0
+                        ? "(Đăng ký nhận thưởng thành công)"
+                        : item?.bonusStatus === 1
+                        ? "(Nhận thưởng thành công)"
+                        : item?.bonusStatus === 2
+                        ? "(Đang xử lý)"
+                        : item?.bonusStatus === 3
+                        ? "(Từ chối)"
+                        : ""
+                    }`}
                   </Typography>
                 </>
               );
