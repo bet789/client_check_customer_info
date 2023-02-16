@@ -535,7 +535,7 @@ export default function BET789() {
                 Điều khoản và chính sách
               </Typography.Link>
               <Modal
-                title="Cho Đi Một Chữ Tín - Nhận Lại Vạn Chữ Tín"
+                title="Cho Đi Một Chữ Tín - Nhận Lại Vạn Chữ Tin"
                 open={isModalOpen}
                 onOk={handleOk}
                 footer={null}
