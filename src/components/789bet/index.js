@@ -80,7 +80,7 @@ export default function BET789() {
 
   const getListBank = async () => {
     await axios
-      .get(`${api.API_URL}${API_CUSTOMER_LISTBANK}`)
+      .get(`${api.API_URL}${API_CUSTOMER_LISTBANK}?siteName=${siteName}`)
       .then((response) => {
         const _listBank = response?.data.map((item, index) => {
           return { value: item, label: item };
