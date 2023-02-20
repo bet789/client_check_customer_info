@@ -556,7 +556,7 @@ export default function BET789() {
                   </span>
                 </p>
                 <p>
-                  <b>※ Thời gian bắt đầu:</b> 00:00:00 16/02/2023 (Giờ hệ thống)
+                  <b>※ Thời gian bắt đầu:</b> 00:00:00 21/02/2023 (Giờ hệ thống)
                 </p>
                 <p>
                   <b>※ Thời gian kết thúc:</b> Cho đến khi có thông báo chính
@@ -680,7 +680,7 @@ export default function BET789() {
                 </table>
 
                 <p>
-                  <b>※ Điều kiện nhận thưởng:</b> (tính từ ngày 16/02/2023 trở
+                  <b>※ Điều kiện nhận thưởng:</b> (tính từ ngày 21/02/2023 trở
                   về sau)
                 </p>
                 <p> - Có từ 3 lần nạp tiền trở lên.</p>
