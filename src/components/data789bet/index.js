@@ -302,6 +302,14 @@ export default function Data789BetPage({ username }) {
       key: "checkCount",
     },
     {
+      title: "Thời gian ĐK",
+      dataIndex: "createdDate",
+      key: "createdDate",
+      render: (text) => {
+        return dayjs(text).format("DD/MM/YYYY HH:mm:ss");
+      },
+    },
+    {
       title: "Trạng thái",
       dataIndex: "status",
       key: "status",
