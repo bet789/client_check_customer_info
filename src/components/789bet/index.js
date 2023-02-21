@@ -598,7 +598,7 @@ export default function BET789() {
                     <tr>
                       <td>1</td>
                       <td>28</td>
-                      <td rowSpan={20}>1 Vòng</td>
+                      <td rowSpan={20}>2 Vòng</td>
                     </tr>
                     <tr>
                       <td>2</td>
