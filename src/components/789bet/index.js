@@ -683,7 +683,7 @@ export default function BET789() {
 
                 <p>
                   <b>※ Điều kiện nhận thưởng:</b> (tính từ ngày 21/02/2023 trở
-                  về sau)
+                  đi.)
                 </p>
                 <p>
                   {" "}
