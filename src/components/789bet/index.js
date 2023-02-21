@@ -156,7 +156,9 @@ export default function BET789() {
                   <Typography>
                     Số tiền nạp:
                     <span style={{ color: "#f01" }}>
-                      {` ${(parseInt(response?.data?.bonusValue) * 30) / 100} `}
+                      {` ${
+                        (parseInt(response?.data?.bonusValue) * 100) / 100
+                      } `}
                     </span>{" "}
                     điểm
                   </Typography>
