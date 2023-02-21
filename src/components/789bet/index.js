@@ -683,17 +683,21 @@ export default function BET789() {
                   <b>※ Điều kiện nhận thưởng:</b> (tính từ ngày 21/02/2023 trở
                   về sau)
                 </p>
-                <p> - Có từ 3 lần nạp tiền trở lên.</p>
-                <p> - Số tiền nạp phải đạt 30% tiền thưởng.</p>
+                <p>
+                  {" "}
+                  - Có từ 3 lần nạp tiền trở lên. (Không tính lần nạp đầu nhận
+                  khuyến mãi 100% và 200%)
+                </p>
+                <p> - Số tiền nạp phải đạt 100% tiền thưởng.</p>
                 <p>
                   - Tài khoản từ ngày 14/01/2023 trở về sau có thay đổi thông
                   tin ngân hàng không được tham gia chương trình này.
                 </p>
                 <p>
                   <b>※ Ví dụ: </b>Thành viên có VIP 8 nhận thưởng miễn phí là
-                  2,288 điểm (tiền nạp: 2,288 * 30% = 686,4 điểm), thành viên có
-                  tiền nạp từ 686,4 điểm trở lên sẽ nhận được phần thưởng VIP
-                  tương ứng.
+                  2,288 điểm (tiền nạp vào lớn hơn 3 lần : 1000 + 1000 + 288=
+                  2,288 điểm), thành viên có tiền nạp từ 2,288 điểm trở lên sẽ
+                  nhận được phần thưởng VIP tương ứng.
                 </p>
                 <p>
                   <b>Lời ngỏ: </b>Để chân thành cảm ơn toàn bộ hội viên đã tin
