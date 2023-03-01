@@ -322,8 +322,7 @@ export default function BET789() {
   };
 
   const handleImgVIP = (level) => {
-    // level = level?.toString().slice(3).trim();
-    let _level = level.slice(level.length - 1, level.length);
+    let _level = level.toString().toUpperCase().replace("VIP", "").trim();
 
     switch (_level) {
       case "1":
