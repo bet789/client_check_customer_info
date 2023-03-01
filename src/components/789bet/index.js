@@ -744,7 +744,6 @@ export default function BET789() {
           footer={null}
           style={{ top: 20 }}
         >
-          {console.log(dataHistory)}
           {dataHistory && dataHistory.length > 0 ? (
             dataHistory.reverse().map((item, i) => {
               return (
