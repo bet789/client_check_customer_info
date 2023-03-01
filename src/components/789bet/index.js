@@ -322,8 +322,10 @@ export default function BET789() {
   };
 
   const handleImgVIP = (level) => {
-    level = level?.toString().slice(3).trim();
-    switch (level) {
+    // level = level?.toString().slice(3).trim();
+    let _level = level.slice(level.length - 1, level.length);
+
+    switch (_level) {
       case "1":
         return <Avatar src={vip1.src} />;
         break;
