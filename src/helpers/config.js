@@ -2,7 +2,7 @@ module.exports = {
   api: {
     API_URL: "https://apiinfo.shbet.me/api",
   },
-  siteName: "789bet",
+  siteName: "shbet",
   accountAdmin: {
     username: "xuxian",
     password: "xuxian@@",
