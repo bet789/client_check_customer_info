@@ -562,8 +562,8 @@ export default function BET789() {
                   <b>※ Thời gian bắt đầu:</b> 00:00:00 21/02/2023 (Giờ hệ thống)
                 </p>
                 <p>
-                  <b>※ Thời gian kết thúc:</b> Cho đến khi có thông báo chính
-                  thức.
+                  <b>※ Thời gian kết thúc:</b> 23:59:59 10/03/2023 (Giờ hệ
+                  thống)
                 </p>
                 <p>
                   <b>※ CHÚ Ý:</b> 1 điểm = 1,000 VND
